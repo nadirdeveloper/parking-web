@@ -6,10 +6,10 @@ export const AdminRoute = ({ component: Component, ...rest }) => {
     return (
     <Route {...rest} render={props => (
         !localStorage.getItem('user') ?
-            <Redirect to={{ pathname: '/login', state: { from: props.location } }} /> : (JSON.parse(localStorage.getItem('user'))).role === "admin"
+            <Redirect to={{ pathname: '/user/login', state: { from: props.location } }} /> : (JSON.parse(localStorage.getItem('user'))).role === "admin"
                 ? <Sidebar>
                     <Component {...props} />
                 </Sidebar> 
-                : <Redirect to={{ pathname: '/parkings', state: { from: props.location } }} />
+                : <Redirect to={{ pathname: '/user/home', state: { from: props.location } }} />
     )} />
 )}

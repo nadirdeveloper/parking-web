@@ -1,6 +1,6 @@
 import { userConstants } from '../../Constants';
-
-export function users(state = {}, action) {
+const initialState = { loading: false, data: {} }
+export function dashboard(state = initialState, action) {
   switch (action.type) {
     case userConstants.GET_DASHBOARD_REQUEST:
       return {
@@ -8,11 +8,13 @@ export function users(state = {}, action) {
       };
     case userConstants.GET_DASHBOARD_SUCCESS:
       return {
-        items: action.users
+        data: action.data,
+        loading: false
       };
     case userConstants.GET_DASHBOARD_FAILURE:
-      return { 
-        error: action.error
+      return {
+        error: action.error,
+        loading: false
       };
     default:
       return state

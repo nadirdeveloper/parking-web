@@ -1,4 +1,4 @@
-import { userConstants } from '../../Constants';
+import { userConstants, dashboardConstants } from '../../Constants';
 import { userService } from '../../Services';
 import { notification } from 'antd';
 import { history } from '../../utils/History';
@@ -7,6 +7,7 @@ import { history } from '../../utils/History';
 export const userActions = {
     login,
     logout,
+    getDashboardData
 };
 
 function login(email, password) {
@@ -17,7 +18,7 @@ function login(email, password) {
                 user => {
                     dispatch(success(user));
                     notification.open({ message: "Successfully Logged In", type: "success" })
-                    history.push('/parkings');
+                    history.push('/user/home');
                 },
                 error => {
                     dispatch(failure(error));
@@ -37,18 +38,21 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 
-// function getAll() {
-//     return dispatch => {
-//         dispatch(request());
+function getDashboardData() {
+    return dispatch => {
+        dispatch(request());
+        userService.getDashboardData().then(
+            data => {
+                dispatch(success(data));
+            },
+            error => {
+                dispatch(failure(error));
+                notification.open({ message: error.message, type: "error" })
+            }
+        )
+    }
 
-//         userService.getAll()
-//             .then(
-//                 users => dispatch(success(users)),
-//                 error => dispatch(failure(error))
-//             );
-//     };
-
-//     function request() { return { type: userConstants.GETALL_REQUEST } }
-//     function success(users) { return { type: userConstants.GETALL_SUCCESS, users } }
-//     function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
-// }
+    function request() { return { type: dashboardConstants.GET_DASHBOARD_REQUEST } };
+    function success(data) { return { type: dashboardConstants.GET_DASHBOARD_SUCCESS, data } };
+    function failure(error) { return { type: dashboardConstants.GET_DASHBOARD_SUCCESS, error } };
+}

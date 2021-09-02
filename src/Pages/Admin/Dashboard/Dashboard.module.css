@@ -1,0 +1,43 @@
+.spinContainer{
+    text-align: center;
+}
+.cardGrid{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   flex-wrap: wrap;
+   margin-top: 50px;
+}
+.cardContainer{
+    width: 33%;
+    height: 100px;
+    margin-bottom: 10px !important;
+}
+.cardContainer > div{
+    display: flex;
+    justify-content: space-around;
+}
+.cardIcon{
+    font-size: 50px;
+    color: #1890FF !important;
+}
+.cardLeftContainer{
+    width: 15%;
+    text-align: center;
+}
+.cardRightContainer{
+    width: 60%;
+    text-align: center;
+}
+.cardRightContainer > h2{
+margin: 0px;
+padding: 0px;
+font-weight: bold;
+}
+.cardRightContainer > h3{
+    margin: 0px;
+    padding: 0px;
+}
+.mainHeading{
+    text-align: center;
+}

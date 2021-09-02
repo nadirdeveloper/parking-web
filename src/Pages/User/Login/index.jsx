@@ -90,7 +90,7 @@ class Login extends Component {
                             </Form.Item>
                         </Form></div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Customadeblinds ©2021 Created by Makaan Inc</Footer>
+                <Footer style={{ textAlign: 'center' }}>Parking ©2021 Created by Nadir Ali</Footer>
             </Layout>
         )
     }

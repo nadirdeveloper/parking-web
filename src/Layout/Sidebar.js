@@ -5,14 +5,18 @@ import {
     CloseOutlined,
     MenuOutlined,
     UsergroupAddOutlined,
-    ShoppingOutlined,
+    ScheduleOutlined,
     LogoutOutlined,
-    UserOutlined
+    UserOutlined,
+    InfoCircleOutlined,
+    EnvironmentOutlined,
+    ClockCircleOutlined,
 } from '@ant-design/icons';
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/logo1.png'
 import logoMini from '../assets/images/logo-mini.png'
 import avatarImage from '../assets/images/avatar.jpg'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 const { Header, Sider, Content } = Layout;
 class SideNav extends React.Component {
     state = {
@@ -24,13 +28,22 @@ class SideNav extends React.Component {
             collapsed: !this.state.collapsed,
         });
     };
+    handleLogout = () => {
+
+    }
     getSelectedKey() {
-        if (window.location.pathname === "/home/dashboard") {
+        if (window.location.pathname === "/admin/dashboard") {
             return '1'
-        } else if (window.location.pathname === "/home/allProducts") {
+        } else if (window.location.pathname === "/admin/allUsers") {
             return '2'
-        } else if (window.location.pathname === "/home/allUsers") {
+        }else if (window.location.pathname === "/admin/allAreas") {
             return '3'
+        }else if (window.location.pathname === "/admin/allBookings") {
+            return '4'
+        }else if (window.location.pathname === "/admin/allParkings") {
+            return '5'
+        }else if (window.location.pathname === "/admin/allFeedbacks") {
+            return '6'
         } else {
             return '1'
         }
@@ -40,7 +53,7 @@ class SideNav extends React.Component {
             <Menu>
                 <Menu.Item className="menu-nav-item" key="1"> <UserOutlined /> Profile</Menu.Item>
                 <Menu.Divider />
-                <Menu.Item className="menu-nav-item" key="2"> <LogoutOutlined /> Logout</Menu.Item>
+                <Menu.Item onClick={() => this.handleLogout()} className="menu-nav-item" key="2"> <LogoutOutlined /> Logout</Menu.Item>
             </Menu>
         );
         return (
@@ -51,13 +64,22 @@ class SideNav extends React.Component {
                     </div>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.getSelectedKey()]}>
                         <Menu.Item key="1" icon={<DashboardOutlined />}>
-                            <Link to="/home/dashboard">Dashboard</Link>
+                            <Link to="/admin/dashboard">Dashboard</Link>
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<ShoppingOutlined />}>
-                            <Link to="/home/allProducts"> All Products </Link>
+                        <Menu.Item key="2" icon={<UsergroupAddOutlined />}>
+                            <Link to="/admin/allUsers"> All Users </Link>
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<UsergroupAddOutlined />}>
-                            <Link to="/home/allUsers"> Users </Link>
+                        <Menu.Item key="3" icon={<EnvironmentOutlined />}>
+                            <Link to="/admin/allAreas"> All Areas </Link>
+                        </Menu.Item>
+                        <Menu.Item key="4" icon={<ScheduleOutlined />}>
+                            <Link to="/admin/allBookings"> All Bookings </Link>
+                        </Menu.Item>
+                        <Menu.Item key="5" icon={<ClockCircleOutlined />}>
+                            <Link to="/admin/allParkings"> All Parkings </Link>
+                        </Menu.Item>
+                        <Menu.Item key="6" icon={<InfoCircleOutlined />}>
+                            <Link to="/admin/allFeedbacks"> All Feed </Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
@@ -69,7 +91,7 @@ class SideNav extends React.Component {
                         })}
                         <div className="right-nav-items">
                             <Dropdown overlayClassName="menu-nav-items" overlay={menu} trigger={['click']}>
-                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                <a href="#test" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                                     <img src={avatarImage} alt="profileImg" className="nav-profile-img" height="50" />
                                 </a>
                             </Dropdown>
@@ -90,4 +112,9 @@ class SideNav extends React.Component {
         );
     }
 }
-export default SideNav;
+const mapStateToProps = () => {
+    return {
+
+    }
+}
+export default connect(mapStateToProps)(SideNav);
