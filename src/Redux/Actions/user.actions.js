@@ -7,7 +7,8 @@ import { history } from '../../utils/History';
 export const userActions = {
     login,
     logout,
-    getDashboardData
+    getDashboardData,
+    getAllUsers
 };
 
 function login(email, password) {
@@ -47,7 +48,7 @@ function getDashboardData() {
             },
             error => {
                 dispatch(failure(error));
-                notification.open({ message: error.message, type: "error" })
+                notification.open({ message: error.message, type: "error" });
             }
         )
     }
@@ -55,4 +56,24 @@ function getDashboardData() {
     function request() { return { type: dashboardConstants.GET_DASHBOARD_REQUEST } };
     function success(data) { return { type: dashboardConstants.GET_DASHBOARD_SUCCESS, data } };
     function failure(error) { return { type: dashboardConstants.GET_DASHBOARD_SUCCESS, error } };
+}
+
+
+function getAllUsers() {
+    return dispatch => {
+        dispatch(request());
+        userService.getAllUsers().then(
+            data => {
+                dispatch(success(data));
+            },
+            error => {
+                dispatch(failure(error));
+                notification.open({ message: error.message, type: "error" })
+            }
+        )
+    }
+
+    function request() { return { type: dashboardConstants.GET_USERS_REQUEST } };
+    function success(data) { return { type: dashboardConstants.GET_USERS_SUCCESS, data } };
+    function failure(error) { return { type: dashboardConstants.GET_USERS_SUCCESS, error } };
 }

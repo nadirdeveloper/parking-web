@@ -1,17 +1,17 @@
 import { dashboardConstants } from '../../Constants';
-const initialState = { loading: true, data: [] }
-export function users(state = initialState, action) {
+
+export function feedbacks(state = {}, action) {
   switch (action.type) {
-    case dashboardConstants.GET_USERS_REQUEST:
+    case dashboardConstants.GET_FEEDBACKS_REQUEST:
       return {
         loading: true
       };
-    case dashboardConstants.GET_USERS_SUCCESS:
+    case dashboardConstants.GET_FEEDBACKS_SUCCESS:
       return {
-        data: action.data,
+        data: action.allFeedbacks,
         loading: false
       };
-    case dashboardConstants.GET_USERS_FAILURE:
+    case dashboardConstants.GET_FEEDBACKS_FAILURE:
       return {
         error: action.error,
         loading: false
