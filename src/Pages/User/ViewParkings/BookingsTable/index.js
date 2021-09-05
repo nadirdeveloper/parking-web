@@ -174,9 +174,9 @@ class AreasTable extends React.Component {
           onCancel={() => this.setState({ visible: false })}
         >
           
-          <div style={{textAlign:'center',marginTop:"10px"}} ref={el => (this.componentRef = el)}>
+          <div className="print-table-parent" ref={el => (this.componentRef = el)}>
             <img src={printImage} alt="imagetag" />
-                <table style={{width:'100%',marginTop:"30px",marginBottom:"30px"}} border="1" >
+                <table className="print-table" border="1" >
                   <tbody>
                     <tr >
                       <td>Booking ID</td>
@@ -198,8 +198,8 @@ class AreasTable extends React.Component {
                     </tr>
                   </tbody>
                 </table>
-                <p><b>Note:</b> Please Be On Time and Drive Safe</p>
           </div>
+                <p><b>Note:</b> Please Be On Time and Drive Safe</p>
           <ReactToPrint content={() => this.componentRef}>
             <PrintContextConsumer>
               {({ handlePrint }) => (

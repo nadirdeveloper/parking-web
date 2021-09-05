@@ -73,3 +73,20 @@
   .ant-table::-webkit-scrollbar {
     display: none;
   }
+  .print-table{
+    width: 100%;
+    overflow: scroll;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .print-table::-webkit-scrollbar {
+    display: none;
+  }
+  .print-table-parent{
+   text-align: center;
+   margin-top: 10px;
+   overflow: scroll; 
+  }
+  .print-table-parent::-webkit-scrollbar {
+    display: none;
+  }
