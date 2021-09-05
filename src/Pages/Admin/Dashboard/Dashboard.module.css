@@ -41,3 +41,23 @@ font-weight: bold;
 .mainHeading{
     text-align: center;
 }
+@media screen and (max-width: 600px) {
+    .cardContainer{
+        width: 100%;
+    }
+   .cardGrid{
+       flex-direction: column;
+   }
+   .cardRightContainer {
+    width: 60%;
+   }
+   .cardLeftContainer {
+    width: 40%;
+   }
+   .cardRightContainer > h2{
+        font-size: 12px;
+    }
+    .cardRightContainer > h3{
+        font-size: 14px;
+    }
+  }

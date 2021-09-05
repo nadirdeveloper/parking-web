@@ -49,7 +49,7 @@
   .right-nav-items{
     display: inline;
     float: right;
-    margin-right: 20px;
+    /* margin-right: 20px; */
   }
   .nav-profile-img{
     border: 1px solid rgb(204, 204, 204);
@@ -65,4 +65,11 @@
     text-align: center;
     font-weight: bold;
     font-size: 30px;
+  }
+  .ant-table{
+    width: 100%;
+    overflow: scroll;
+  }
+  .ant-table::-webkit-scrollbar {
+    display: none;
   }

@@ -37,6 +37,7 @@ font-weight: bold;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 .parkingSlot{
     display: flex;
@@ -60,3 +61,19 @@ font-weight: bold;
     text-align: center;
     margin: 10px;
 }
+@media screen and (max-width: 600px) {
+    .cardContainer{
+        width: 100%;
+    }
+   .areasGrid{
+       flex-direction: column;
+   }
+   .slotsGrid{
+    flex-direction: column !important;
+   }
+   .parkingSlot{
+    width: 100%;
+    margin-bottom: 10px;
+   }
+  }
+ 
