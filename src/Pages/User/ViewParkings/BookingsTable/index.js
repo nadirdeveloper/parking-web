@@ -129,7 +129,7 @@ class AreasTable extends React.Component {
         key: 'startTime',
         width: '10%',
         render: (text) => {
-          return new Date(text).toLocaleString()
+          return new Date(text).toUTCString()
         }
       },
       {
@@ -138,7 +138,7 @@ class AreasTable extends React.Component {
         key: 'endTime',
         width: '10%',
         render: (text) => {
-          return new Date(text).toLocaleString()
+          return new Date(text).toUTCString()
         }
       },
       {
@@ -147,7 +147,7 @@ class AreasTable extends React.Component {
         key: 'createdAt',
         width: '10%',
         render: (text) => {
-          return new Date(text).toLocaleString()
+          return new Date(text).toUTCString()
         }
       },
       {
@@ -191,8 +191,8 @@ class AreasTable extends React.Component {
                       <td>{this.state.selectedRecord?.id}</td>
                       <td>{this.state.selectedRecord?.areaId?.name}</td>
                       <td>{this.state.selectedRecord?.parkingId?.name}</td>
-                      <td>{this.state.selectedRecord?.startTime}</td>
-                      <td>{this.state.selectedRecord?.endTime}</td>
+                      <td>{new Date(this.state.selectedRecord?.startTime).toUTCString()}</td>
+                      <td>{new Date(this.state.selectedRecord?.endTime).toUTCString()}</td>
                       <td>{this.state.selectedRecord?.createdAt}</td>
                       <td>{(new Date().getTime() >= this.state.selectedRecord?.endTime) ? "Ended" : this.state.selectedRecord?.isBooking ? "Booked" : "Cancelled"}</td>
                     </tr>

@@ -1,7 +1,6 @@
 import { userConstants, dashboardConstants } from '../../Constants';
 import { userService } from '../../Services';
 import { notification } from 'antd';
-// import { history } from '../../utils/History';
 
 
 export const userActions = {
@@ -33,7 +32,6 @@ function login(email, password, history) {
                 error => {
                     dispatch(failure(error));
                     notification.open({ message: error.message, type: "error" })
-                    // dispatch(alertActions.error(error));
                 }
             );
     };
@@ -56,7 +54,6 @@ function signup(data,history) {
                 error => {
                     dispatch(failure(error));
                     notification.open({ message: error.message, type: "error" })
-                    // dispatch(alertActions.error(error));
                 }
             );
     };

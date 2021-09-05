@@ -121,14 +121,14 @@ class BookingsTable extends React.Component {
         dataIndex: 'startTime',
         key: 'startTime',
         width: '10%',
-        render: (text) => new Date(text).toLocaleString(),
+        render: (text) => new Date(text).toUTCString(),
       },
       {
         title: 'End At',
         dataIndex: 'endTime',
         key: 'endTime',
         width: '10%',
-        render: (text) => new Date(text).toLocaleString(),
+        render: (text) => new Date(text).toUTCString(),
       },
       {
         title: 'Booked',

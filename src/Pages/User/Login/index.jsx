@@ -4,7 +4,6 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import logo from '../../../assets/images/logo.png';
 import logoBlack from '../../../assets/images/logo-black.png';
-// import styles from './Login.module.css';
 import { connect } from 'react-redux';
 import { userActions } from '../../../Redux/Actions'
 import { Link } from 'react-router-dom';

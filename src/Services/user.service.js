@@ -1,5 +1,4 @@
 import { instance } from '../utils/AxiosConfig';
-// import { authHeader } from '../_helpers';
 
 export const userService = {
     login,
