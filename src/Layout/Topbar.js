@@ -73,9 +73,6 @@ class Topbar extends React.Component {
                 >
                     {this.props.children}
                 </Content>
-                {/* <Footer style={{ textAlign: 'center' }}>
-                    Parking ©2021 Created by Nadir Ali
-                </Footer> */}
             </Layout>
         );
     }
