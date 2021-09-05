@@ -6,32 +6,32 @@ export default function AllCards({ data, styles }) {
         {
             title: "TOTAL USERS",
             icon: <UserOutlined className={styles.cardIcon} />,
-            value: 400
+            value: data?.usersCount
         },
         {
             title: "TOTAL AREAS",
             icon: <EnvironmentOutlined className={styles.cardIcon} />,
-            value: 400
+            value: data?.areasCount
         },
         {
             title: "TOTAL BOOKINGS",
             icon: <ScheduleOutlined className={styles.cardIcon} />,
-            value: 400
+            value: data?.bookingCount
         },
         {
             title: "TOTAL CANCELATIONS",
             icon: <CloseCircleOutlined className={styles.cardIcon} />,
-            value: 400
+            value: data?.cancelledBookingCount
         },
         {
-            title: "TOTAL AVAILABLE BOOKINGS",
+            title: "TOTAL PARKING SLOTS",
             icon: <CalendarOutlined className={styles.cardIcon} />,
-            value: 400
+            value:  data?.totalParkingSlots
         },
         {
             title: "TOTAL FEEDBACKS",
             icon: <InfoCircleOutlined className={styles.cardIcon} />,
-            value: 400
+            value: data?.totalFeedbacks
         },
 
     ]

@@ -8,7 +8,7 @@ export function parkings(state = {}, action) {
       };
     case dashboardConstants.GET_PARKINGS_SUCCESS:
       return {
-        data: action.allParkings,
+        data: action.data,
         loading: false
       };
     case dashboardConstants.GET_PARKINGS_FAILURE:

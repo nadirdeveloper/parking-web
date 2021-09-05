@@ -3,6 +3,7 @@ import { Table, Input, Button, Space } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import DeleteBtn from './DeleteBtn';
+import AdminBtn from './AdminBtn';
 
 class UserTable extends React.Component {
   constructor(props) {
@@ -90,7 +91,7 @@ class UserTable extends React.Component {
     this.setState({ searchText: '' });
   };
 
-  
+
 
   render() {
     const columns = [
@@ -135,7 +136,8 @@ class UserTable extends React.Component {
         width: '20%',
         render: (text, record) => (
           <Space size="middle">
-           <DeleteBtn record={record} />
+            <DeleteBtn record={record} />
+            <AdminBtn record={record} text={record.role === "admin" ? "Make User" : "Make Admin"} />
           </Space>
         ),
       },

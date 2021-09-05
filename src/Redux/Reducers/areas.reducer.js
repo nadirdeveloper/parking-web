@@ -1,6 +1,6 @@
 import { dashboardConstants } from '../../Constants';
-
-export function areas(state = {}, action) {
+const initialState = { loading: false, data: [] }
+export function areas(state = initialState, action) {
   switch (action.type) {
     case dashboardConstants.GET_AREAS_REQUEST:
       return {
@@ -8,11 +8,11 @@ export function areas(state = {}, action) {
       };
     case dashboardConstants.GET_AREAS_SUCCESS:
       return {
-        data: action.allAreas,
+        data: action.data,
         loading: false
       };
     case dashboardConstants.GET_AREAS_FAILURE:
-      return { 
+      return {
         error: action.error,
         loading: false
       };

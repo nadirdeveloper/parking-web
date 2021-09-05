@@ -30,6 +30,9 @@ class AllUsers extends Component {
         const data = {
             fullName, email, password, phoneNo, dob, role
         }
+        if(fullName === "" || email === "" || password === "" || phoneNo === "" || dob === ""){
+            return notification.open({ message: "Please Fill Out All Require Fields", type: "error" });
+        }
         this.setState({ confirmLoading: true });
         userService.addUser(data).then((response) => {
             this.setState({ confirmLoading: false, visible: false });
@@ -69,14 +72,19 @@ class AllUsers extends Component {
                     confirmLoading={confirmLoading}
                     onCancel={this.handleCancel}
                 >
+                    <Title level={5}>Full Name</Title>
                     <Input type="text" size="large" onChange={(e) => this.setState({ fullName: e.target.value })} value={fullName} placeholder="Full Name" prefix={<UserOutlined />} />
                     <br /><br />
+                    <Title level={5}>Email</Title>
                     <Input type="email" size="large" onChange={(e) => this.setState({ email: e.target.value })} value={email} placeholder="Email" prefix={<MailOutlined />} />
                     <br /><br />
+                    <Title level={5}>Password</Title>
                     <Input type="password" size="large" onChange={(e) => this.setState({ password: e.target.value })} value={password} placeholder="Password" prefix={<LockOutlined />} />
                     <br /><br />
+                    <Title level={5}>Phone No</Title>
                     <Input type="number" size="large" onChange={(e) => this.setState({ phoneNo: e.target.value })} value={phoneNo} placeholder="Phone No" prefix={<PhoneOutlined />} />
                     <br /><br />
+                    <Title level={5}>Date Of Birth</Title>
                     <Input type="date" size="large" onChange={(e) => this.setState({ dob: e.target.value })} value={dob} placeholder="Date Of Birth" prefix={<CalendarOutlined />} />
                     <br /><br />
 

@@ -1,0 +1,65 @@
+.mainHeading{
+    text-align: center;
+}
+.cardContainer{
+    width: 33%;
+    height: 100px;
+    margin-bottom: 10px !important;
+    cursor: pointer;
+}
+.cardContainer > div{
+    display: flex;
+    justify-content: space-around;
+}
+.cardIcon{
+    font-size: 50px;
+    color: #1890FF !important;
+}
+.cardLeftContainer{
+    width: 15%;
+    text-align: center;
+}
+.cardRightContainer{
+    width: 60%;
+    text-align: center;
+}
+.cardRightContainer > h2{
+margin: 0px;
+padding: 0px;
+font-weight: bold;
+}
+.cardRightContainer > h3{
+    margin: 0px;
+    padding: 0px;
+}
+.slotsGrid{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.parkingSlot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 15%;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.areasGrid{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bookSlot{
+    text-align: center;
+}
+.bookSlotBtn{
+    /* text-align: center; */
+}
+.checkSlot{
+    text-align: center;
+    margin: 10px;
+}

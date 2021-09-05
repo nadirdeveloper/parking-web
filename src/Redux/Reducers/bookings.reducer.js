@@ -8,7 +8,7 @@ export function bookings(state = {}, action) {
       };
     case dashboardConstants.GET_BOOKINGS_SUCCESS:
       return {
-        data: action.allBookings,
+        data: action.data,
         loading: false
       };
     case dashboardConstants.GET_BOOKINGS_FAILURE:

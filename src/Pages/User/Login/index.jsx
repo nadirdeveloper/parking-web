@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import logo from '../../../assets/images/logo.png';
@@ -7,8 +7,9 @@ import logoBlack from '../../../assets/images/logo-black.png';
 // import styles from './Login.module.css';
 import { connect } from 'react-redux';
 import { userActions } from '../../../Redux/Actions'
+import { Link } from 'react-router-dom';
 const { Header, Content, Footer } = Layout;
-
+const {Title} = Typography;
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ class Login extends Component {
     handleLogin = ({ email, password }) => {
         const { dispatch } = this.props;
         if (email && password) {
-            dispatch(userActions.login(email, password));
+            dispatch(userActions.login(email, password, this.props.history));
         }
     }
     render() {
@@ -35,13 +36,14 @@ class Login extends Component {
                             name="normal_login"
                             className="login-form"
                             initialValues={{
-                                remember: true,
+                                remember: false,
                             }}
                             onFinish={(data) => this.handleLogin(data)}
                         >
                             <div className="login-logo-container">
                                 <img src={logoBlack} alt="logo" height="50" />
                             </div>
+                            <Title level={5}>Email</Title>
                             <Form.Item
                                 name="email"
                                 className="login-inputfield"
@@ -54,6 +56,7 @@ class Login extends Component {
                             >
                                 <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
                             </Form.Item>
+                            <Title level={5}>Password</Title>
                             <Form.Item
                                 name="password"
                                 className="login-inputfield"
@@ -71,22 +74,12 @@ class Login extends Component {
                                 />
                             </Form.Item>
                             <Form.Item>
-                                <Form.Item name="remember" valuePropName="checked" noStyle>
-                                    <Checkbox>Remember me</Checkbox>
-                                </Form.Item>
-
-                                <span className="login-form-forgot" href="#">
-                                    Forgot password
-                                </span>
-                            </Form.Item>
-
-                            <Form.Item>
                                 <div className="login-form-btn-cont">
                                     <Button type="primary" htmlType="submit" className="login-form-button">
                                         Log in
                                     </Button>
                                 </div>
-                                {/* Or <a href="">register now!</a> */}
+                                Or <Link to="/user/signup">create account!</Link>
                             </Form.Item>
                         </Form></div>
                 </Content>

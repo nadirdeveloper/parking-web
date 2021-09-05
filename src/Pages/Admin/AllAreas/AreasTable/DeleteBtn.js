@@ -10,8 +10,8 @@ export default function DeleteBtn({ record }) {
 
     const handleDelete = () => {
         setLoading(true);
-        userService.deleteUser(record.userId).then((response) => {
-            dispatch(userActions.getAllUsers());
+        userService.deleteArea(record.id).then((response) => {
+            dispatch(userActions.getAllAreas());
             setLoading(false);
             notification.open({ message: response.message, type: "success" });
         }, (error) => {

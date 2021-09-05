@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import Dashboard from './Pages/Admin/Dashboard';
 import Login from './Pages/User/Login';
+import Signup from './Pages/User/Signup';
 import Home from './Pages/User/Home';
 import { history } from './utils/History';
 import { AdminRoute } from './utils/Routers/AdminRoute';
@@ -21,6 +22,7 @@ export default function Routes() {
             <Router history={history}>
                 <Switch>
                     <AuthRoute path="/user/login" exact component={Login} />
+                    <AuthRoute path="/user/signup" exact component={Signup} />
                     <PrivateRoute path="/user/home" exact component={Home} />
                     <PrivateRoute path="/user/bookParking" exact component={BookParking} />
                     <PrivateRoute path="/user/viewParkings" exact component={ViewParkings} />

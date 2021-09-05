@@ -4,6 +4,8 @@ import logo from '../assets/images/logo1.png'
 import avatarImage from '../assets/images/avatar.jpg'
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { userActions } from '../Redux/Actions'
 const { Header, Content } = Layout;
 class Topbar extends React.Component {
     state = {
@@ -22,12 +24,15 @@ class Topbar extends React.Component {
             return '1'
         }
     }
+    handleLogout = () => {
+        this.props.dispatch(userActions.logout(this.props.history));
+    }
     render() {
         const menu = (
             <Menu>
                 <Menu.Item className="menu-nav-item" key="1"> <UserOutlined /> Profile</Menu.Item>
                 <Menu.Divider />
-                <Menu.Item className="menu-nav-item" key="2"> <LogoutOutlined /> Logout</Menu.Item>
+                <Menu.Item className="menu-nav-item" key="2" onClick={() => this.handleLogout()} > <LogoutOutlined /> Logout</Menu.Item>
             </Menu>
         );
 
@@ -47,7 +52,7 @@ class Topbar extends React.Component {
                             <Link to="/user/home">Home</Link>
                         </Menu.Item>
                         <Menu.Item key="2"><Link to="/user/bookParking">Book Parking</Link></Menu.Item>
-                        <Menu.Item key="3"><Link to="/user/viewParkings">View Parkings</Link></Menu.Item>
+                        <Menu.Item key="3"><Link to="/user/viewParkings">View Bookings</Link></Menu.Item>
                         <Menu.Item key="4"><Link to="/user/feedback">Feedback</Link></Menu.Item>
                     </Menu>
                     <div className="right-nav-items">
@@ -75,4 +80,5 @@ class Topbar extends React.Component {
         );
     }
 }
-export default Topbar;
+
+export default connect()(Topbar);

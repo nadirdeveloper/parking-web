@@ -8,7 +8,7 @@ export function feedbacks(state = {}, action) {
       };
     case dashboardConstants.GET_FEEDBACKS_SUCCESS:
       return {
-        data: action.allFeedbacks,
+        data: action.data,
         loading: false
       };
     case dashboardConstants.GET_FEEDBACKS_FAILURE:

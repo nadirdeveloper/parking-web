@@ -14,26 +14,25 @@ class AllAreas extends Component {
         this.state = {
             visible: false,
             confirmLoading: false,
-            fullName: "",
-            email: "",
-            password: "",
-            phoneNo: "",
-            dob: "",
-            role: "user"
+            areaName: "",
+            parkingSpace: 1
         }
     }
     componentDidMount() {
         this.props.dispatch(userActions.getAllAreas());
     }
     handleOk = () => {
-        const { fullName, email, password, phoneNo, dob, role } = this.state;
+        const { areaName, parkingSpace } = this.state;
         const data = {
-            fullName, email, password, phoneNo, dob, role
+            areaName, parkingSpace
+        }
+        if(areaName === ""){
+            return notification.open({ message: "Please Enter An Area Name", type: "error" });
         }
         this.setState({ confirmLoading: true });
-        userService.addUser(data).then((response) => {
-            this.setState({ confirmLoading: false, visible: false });
-            this.props.dispatch(userActions.getAllUsers());
+        userService.addArea(data).then((response) => {
+            this.setState({ confirmLoading: false, visible: false, parkingSpace: 1, areaName: "" });
+            this.props.dispatch(userActions.getAllAreas());
             notification.open({ message: response.message, type: "success" });
         }, (error) => {
             if (error) {
@@ -46,10 +45,10 @@ class AllAreas extends Component {
         this.setState({ visible: false });
     }
     render() {
-        const { visible, confirmLoading, fullName, email, password, phoneNo, dob, role } = this.state;
+        const { visible, confirmLoading, areaName, parkingSpace } = this.state;
         return (
             <div>
-                <Title className={styles.mainHeading} level={2}>ALL USERS</Title>
+                <Title className={styles.mainHeading} level={2}>ALL AREAS</Title>
                 <div className={styles.usersActions}>
                     <Button
                         type="primary"
@@ -58,31 +57,26 @@ class AllAreas extends Component {
                         size="small"
                         style={{ width: 100, height: 40 }}
                     >
-                        Add User
+                        Add Area
                     </Button>
                 </div>
                 <Modal
-                    title="ADD USER"
+                    title="ADD AREA"
                     visible={visible}
                     onOk={this.handleOk}
                     okText="CREATE"
                     confirmLoading={confirmLoading}
                     onCancel={this.handleCancel}
                 >
-                    <Input type="text" size="large" onChange={(e) => this.setState({ fullName: e.target.value })} value={fullName} placeholder="Full Name" prefix={<UserOutlined />} />
-                    <br /><br />
-                    <Input type="email" size="large" onChange={(e) => this.setState({ email: e.target.value })} value={email} placeholder="Email" prefix={<MailOutlined />} />
-                    <br /><br />
-                    <Input type="password" size="large" onChange={(e) => this.setState({ password: e.target.value })} value={password} placeholder="Password" prefix={<LockOutlined />} />
-                    <br /><br />
-                    <Input type="number" size="large" onChange={(e) => this.setState({ phoneNo: e.target.value })} value={phoneNo} placeholder="Phone No" prefix={<PhoneOutlined />} />
-                    <br /><br />
-                    <Input type="date" size="large" onChange={(e) => this.setState({ dob: e.target.value })} value={dob} placeholder="Date Of Birth" prefix={<CalendarOutlined />} />
+                    <Input type="text" size="large" onChange={(e) => this.setState({ areaName: e.target.value })} value={areaName} placeholder="Area Name" prefix={<UserOutlined />} />
                     <br /><br />
 
-                    <Select defaultValue={role} style={{ width: 120 }} onChange={(value) => this.setState({ role: value })}>
-                        <Option value="user">USER</Option>
-                        <Option value="admin">ADMIN</Option>
+                    <Select defaultValue={parkingSpace} style={{ width: 120 }} onChange={(value) => this.setState({ parkingSpace: value })}>
+                        <Option value={1}>1</Option>
+                        <Option value={2}>2</Option>
+                        <Option value={3}>3</Option>
+                        <Option value={4}>4</Option>
+                        <Option value={5}>5</Option>
                     </Select>
                 </Modal>
                 <AreasTable loading={this.props.loading} data={this.props.data} />
@@ -91,9 +85,10 @@ class AllAreas extends Component {
     }
 }
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        loading: state.users.loading,
-        data: state.users.data
+        loading: state.areas.loading,
+        data: state.areas.data
     }
 };
 

@@ -19,7 +19,7 @@ class Dashboard extends Component {
                             <Spin />
                         </div>
                     ) : (
-                            <AllCards styles={styles} data={{}} />
+                            <AllCards styles={styles} data={this.props.data} />
                     )
                 }
 

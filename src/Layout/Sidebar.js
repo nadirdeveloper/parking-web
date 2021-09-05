@@ -17,6 +17,7 @@ import logoMini from '../assets/images/logo-mini.png'
 import avatarImage from '../assets/images/avatar.jpg'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { userActions } from '../Redux/Actions';
 const { Header, Sider, Content } = Layout;
 class SideNav extends React.Component {
     state = {
@@ -29,7 +30,7 @@ class SideNav extends React.Component {
         });
     };
     handleLogout = () => {
-
+        this.props.dispatch(userActions.logout(this.props.history));
     }
     getSelectedKey() {
         if (window.location.pathname === "/admin/dashboard") {
@@ -79,7 +80,7 @@ class SideNav extends React.Component {
                             <Link to="/admin/allParkings"> All Parkings </Link>
                         </Menu.Item>
                         <Menu.Item key="6" icon={<InfoCircleOutlined />}>
-                            <Link to="/admin/allFeedbacks"> All Feed </Link>
+                            <Link to="/admin/allFeedbacks"> All Feedbacks </Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>

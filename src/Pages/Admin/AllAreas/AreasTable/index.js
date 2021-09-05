@@ -90,44 +90,30 @@ class AreasTable extends React.Component {
     this.setState({ searchText: '' });
   };
 
-  
+
 
   render() {
     const columns = [
       {
-        title: 'User ID',
-        dataIndex: 'userId',
-        key: 'userId',
+        title: 'Area ID',
+        dataIndex: 'id',
+        key: 'id',
         width: '10%',
-        ...this.getColumnSearchProps('userId'),
+        ...this.getColumnSearchProps('id'),
       },
       {
-        title: 'Full Name',
-        dataIndex: 'fullName',
-        key: 'fullName',
+        title: 'Area Name',
+        dataIndex: 'name',
+        key: 'name',
         width: '10%',
-        ...this.getColumnSearchProps('fullName'),
+        ...this.getColumnSearchProps('name'),
       },
       {
-        title: 'Email',
-        dataIndex: 'email',
-        key: 'email',
+        title: 'Parking Slots',
+        dataIndex: 'totalPakringSpace',
+        key: 'totalPakringSpace',
         width: '10%',
-        ...this.getColumnSearchProps('email'),
-      },
-      {
-        title: 'Role',
-        dataIndex: 'role',
-        key: 'role',
-        width: '10%',
-        ...this.getColumnSearchProps('role'),
-      },
-      {
-        title: 'DOB',
-        dataIndex: 'dob',
-        key: 'dob',
-        width: '10%',
-        ...this.getColumnSearchProps('dob'),
+        ...this.getColumnSearchProps('totalPakringSpace'),
       },
       {
         title: 'Action',
@@ -135,7 +121,7 @@ class AreasTable extends React.Component {
         width: '20%',
         render: (text, record) => (
           <Space size="middle">
-           <DeleteBtn record={record} />
+            <DeleteBtn record={record} />
           </Space>
         ),
       },
